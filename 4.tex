@@ -1,0 +1,60 @@
+\section{Confirm that for an infinitesimal rotation in the $a-b$ plane, $$-(x_a \nabla_b - x_b \nabla_a)\psi_\sigma(\vec{x},t) = \frac{1}{i\hbar}[\psi_\sigma(\vec{x},t), M_{ab}]$$ and $$-(x_a \nabla_b - x_b \nabla_a)\psi^{\dagger\sigma}(\vec{x},t) = \frac{1}{i\hbar}[\psi^{\dagger\sigma}(\vec{x},t), M_{ab}]$$ where $M_{ab}$ is given in (3.25).}
+
+(3.25)
+\begin{align*}
+    M_{ab} &= -\frac{i\hbar}{2}\int d^3x [\psi^{\dagger\sigma}(\vec{x},t)(x_a \nabla_b - x_b \nabla_a)\psi_{\sigma}(\vec{x},t) \\
+    &\hspace{1cm}-(x_a \nabla_b - x_b \nabla_a)\psi^{\dagger\sigma}(\vec{x},t)\psi_{\sigma}(\vec{x},t)] \\
+\end{align*}
+
+Start with the commutators:
+\begin{align*}
+    \frac{1}{i\hbar}[\psi_\sigma(\vec{x},t), M_{ab}] &= \frac{1}{i\hbar}\psi_\sigma(\vec{x},t)M_{ab} - \frac{1}{i\hbar}M_{ab}\psi_\sigma(\vec{x},t) \\
+    &=  -\frac{1}{2}\psi_\sigma(\vec{x},t)\int d^3y [\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)] \\
+    &\hspace{1cm}+\frac{1}{2}\int d^3y [\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)]\psi_\sigma(\vec{x},t) \\
+    &=  \frac{1}{2}\int d^3y -\psi_\sigma(\vec{x},t)\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+\psi_\sigma(\vec{x},t)(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+[\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)]\psi_\sigma(\vec{x},t) \\
+\end{align*}
+
+Recall equal-time anti-commutators: 
+\begin{align*}
+    \psi_\sigma(\vec{x},t)\psi^{\rho\dagger}(\vec{y},t) + \psi^{\rho\dagger}(\vec{y},t)\psi_\sigma(\vec{x},t) = \delta_\sigma^\rho \delta(\vec{x}-\vec{y})\\
+    \psi_\sigma(\vec{x},t)\psi_{\rho}(\vec{y},t) + \psi_{\rho}(\vec{y},t)\psi_\sigma(\vec{x},t) = 0
+\end{align*}
+
+Also note that the $\nabla_i$s are w.r.t. $y_i$ for now, so we can pass the $\vec{x}$ field operators through the $(y_a\nabla_b - y_b\nabla_a)$ terms:
+
+\begin{align*}
+    \frac{1}{i\hbar}[\psi_\sigma(\vec{x},t), M_{ab}] 
+    &= \frac{1}{2}\int d^3y -[-\psi^{\dagger\sigma}(\vec{y},t)\psi_\sigma(\vec{x},t) + \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})](y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+(y_a \nabla_b - y_b \nabla_a)[-\psi^{\dagger\sigma}(\vec{y},t)\psi_\sigma(\vec{x},t) + \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})]\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+[\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)]\psi_\sigma(\vec{x},t) \\
+    &= \frac{1}{2}\int d^3y 
+    \psi^{\dagger\sigma}(\vec{y},t)\psi_\sigma(\vec{x},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t)\\
+    &\hspace{1cm}- \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_\sigma(\vec{x},t)\\
+    &\hspace{1cm}+ (y_a \nabla_b - y_b \nabla_a)\delta_\sigma^\sigma \delta(\vec{x}-\vec{y})\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+[\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)]\psi_\sigma(\vec{x},t) \\
+    &= \frac{1}{2}\int d^3y 
+    -\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t)\psi_\sigma(\vec{x},t) \\
+    &\hspace{1cm}- \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_\sigma(\vec{y},t)\psi_{\sigma}(\vec{x},t) \\
+    &\hspace{1cm}- \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}+[\psi^{\dagger\sigma}(\vec{y},t)(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+    &\hspace{1cm}-(y_a \nabla_b - y_b \nabla_a)\psi^{\dagger\sigma}(\vec{y},t)\psi_{\sigma}(\vec{y},t)]\psi_\sigma(\vec{x},t) \\
+    &= \int d^3y 0 + 0 - \delta_\sigma^\sigma \delta(\vec{x}-\vec{y})(y_a \nabla_b - y_b \nabla_a)\psi_{\sigma}(\vec{y},t) \\
+\end{align*}
+
+Note that $\sigma$ is not summed, so $\delta_\sigma^\sigma = 1$. Integrate the $\delta(\vec{x}-\vec{y})$ and we get the desired result:
+
+\begin{align*}
+    \frac{1}{i\hbar}[\psi_\sigma(\vec{x},t), M_{ab}] 
+    &=  - (x_a \nabla_b - x_b \nabla_a)\psi_{\sigma}(\vec{x},t) \\
+\end{align*}
+
+(where now $\nabla_a$ is w.r.t. $x_a$)

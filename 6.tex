@@ -1,0 +1,25 @@
+\section{Show that the Galilean transformations defined above are a symetry of the theory defined by the action and Lagrangian density (3.5).}
+
+The Galilean transformations defined above:
+\begin{align*}
+    \delta\psi_\sigma(\vec{x}, t) &= \left(-\vec{v}t \cdot \vec{\nabla} + \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right)\psi_\sigma(\vec{x}, t) \\
+    \delta\psi^{\sigma\dagger}(\vec{x}, t) &= \left(-\vec{v}t \cdot \vec{\nabla} - \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right)\psi^{\sigma\dagger}(\vec{x}, t) \\
+\end{align*}
+
+
+To show this is a symmetry, we want to show $\delta\L(\vec{x},t) = \frac{\d}{\d t}R(\vec{x},t) + \vec{\nabla}\cdot\vec{J}(\vec{x},t)$ for some $R,\vec{J}$.
+
+The Lagrangian:
+\begin{align*}
+    \L &= \frac{i\hbar}{2}\psi^{\sigma\dagger} \frac{\d}{\d t}\psi_{\sigma} - \frac{i\hbar}{2}\frac{\d}{\d t}\psi^{\sigma\dagger} \psi_{\sigma} - \frac{\hbar^2}{2m}\nabla \psi^{\sigma\dagger} \cdot \nabla \psi_{\sigma} - \frac{\lambda}{2}\left(\psi^{\sigma\dagger} \psi_{\sigma}\right)^2 \\
+\end{align*}
+
+This is does not explicitly depend on $\vec{x}$ or $t$, so we have
+\begin{align*}
+    \delta \L &= \left(-\vec{v}t \cdot \vec{\nabla} + \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right) \L \\
+    &= \left(-v_a t \nabla_a \L + \frac{i}{\hbar}m v_a x_a \L\right) \\
+    &= 0  + \frac{\d}{\d t}\left(t\frac{i}{\hbar}mv_a x_a \L\right) \\
+    &= \frac{\d}{\d t}\left(t\frac{i}{\hbar}m \vec{v}\cdot\vec{x} \L\right) + \nabla \cdot \vec{0} \\
+\end{align*}
+
+So these transformations are a symmetry, with $R=\frac{it}{\hbar}m\vec{v}\cdot \vec{x}\L, \vec{J} = 0$.

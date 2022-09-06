@@ -1,0 +1,63 @@
+\section{Assume that $$P_a \ket{\0} = 0, \bra{\0}P_a = 0, M_{ab}\ket{\0}=0, \bra{\0}M_{ab}=0.$$ Prove that $\bra{\0}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0}$ can only be a function of the coordinates $\vec{x}$ and $\vec{y}$ through the combination $|\vec{x}-\vec{y}| = \sqrt{(\vec{x}-\vec{y})^2}$.}
+
+Consider that expetation value of a commutator:
+\begin{align*}
+    &\frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), P_a\right] \ket{\0} \\
+    &= \frac{1}{i\hbar} \bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')P_a \ket{\0} - \bra{\0}P_a\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\ 
+    &= \frac{1}{i\hbar} \bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')(0) - (0)\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}  &[\text{use }\bra{\0}P_a = 0, P_a\ket{\0} = 0]\\ 
+    &= 0 - 0 \\ 
+    &= 0 \\ 
+\end{align*}
+
+Then consider $\left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}$:
+
+\begin{align*}
+    &\left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\
+    &= \bra{\0} \frac{\d}{\d x^a}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0} + \bra{\0}\psi_\sigma(\vec{x},t)\frac{\d}{\d y^a}\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\
+    &= \frac{1}{i\hbar}\bra{\0} [\psi_\sigma(\vec{x},t), \mathcal{Q}]\psi^{\dagger\rho}(\vec{y},t')\ket{\0} + \frac{1}{i\hbar}\bra{\0}\psi_\sigma(\vec{x},t)[\psi^{\dagger\rho}(\vec{y},t'), \mathcal{Q}] \ket{\0} \\
+    &= \frac{1}{i\hbar}\bra{\0} [\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \mathcal{Q}]\ket{\0} \\
+\end{align*}
+
+So in particular for $P_a$,
+\begin{align*}
+    0 &= \frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), P_a\right] \ket{\0} \\
+    &= \left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\ 
+\end{align*}
+
+And if we let $\vec{r} = \vec{x} + \vec{y}$,
+\begin{align*}
+    \frac{\d}{\d r^a} &= \frac{\d}{\d x^a} + \frac{\d}{\d y^a} \\
+    \implies \frac{\d}{\d r^a}\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} &= 0 \\
+\end{align*}
+
+This implies $\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}$ depends on $\vec{x}$ and $\vec{y}$ through the combination $\vec{x}-\vec{y}$ rather than $\vec{x}+\vec{y}$.
+
+Then, it is also true that  
+\begin{align*}
+    0 &= \frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), M_{ab}\right] \ket{\0} \\ 
+\end{align*}
+
+And finally to show this function only depends on the magnitude $|\vec{x}-\vec{y}|$, let's show that $(x_a\nabla_b - x_b\nabla_a)f(\vec{x}) = 0$ for every pair $(a,b)$ $\implies f(\vec{x})$ depends only on $|\vec{x}|$.
+
+Consider just $x^1, x^2$ for now.
+
+\begin{align*}
+    (x^1\nabla_2 - x^2\nabla_1)f(x^1,x^2,\ldots) &= 0 \implies f = f((x^1)^2 + (x^2)^2,\ldots) \\
+\end{align*}
+
+Then $x^1, x^2, x^3$ (or equivalently for $f$, $(x^1)^2 + (x^2)^2, x^3$):
+\begin{align*}
+    (x^2\nabla_3 - x^3\nabla_2)f((x^1)^2 + (x^2)^2, x^3,\ldots) &= 0 \implies f = f((x^1)^2 + (x^2)^2 + (x^3)^2,\ldots) \\
+\end{align*}
+
+And if we continue in the same way for however many coordinates we have, we find:
+\begin{align*}
+    f = f(\sum_i (x^i)^2) \\
+\end{align*}
+    
+Or equivalently,
+\begin{align*}
+    f = f(\sqrt{\sum_i (x^i)^2}) = f(|\vec{x}|) \\
+\end{align*}
+
+Since we have a function of this type above, which satisfies $(x_a\nabla_b - x_b\nabla_a)f(\vec{x}) = 0$ for every pair $(a,b)$, we can say $\bra{\0}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0}$ is only a function of $|\vec{x}-\vec{y}| = \sqrt{\sum_i (x_i-y_i)^2}$.

@@ -1,0 +1,56 @@
+\section{Show that if (3.12), (3.13), and (3.14) are true, we have (3.15) and (3.16).}
+
+(3.12) and (3.13):
+\begin{align*}
+    \delta_{ab}\psi_\sigma(\vec{x}, t) &= (x_a \nabla_b - x_b \nabla_a)\psi_\sigma(\vec{x}, t) \\
+    \delta_{ab}\psi^{\sigma\dagger}(\vec{x}, t) &= (x_a \nabla_b - x_b \nabla_a)\psi^{\sigma\dagger}(\vec{x}, t) \\
+\end{align*}
+
+(3.14):
+\begin{align*}
+    \delta_{ab} \mathcal{L}(\vec{x},t) &= (x_a \nabla_b - x_b \nabla_a) \L(\vec{x},t)\\
+    \implies \delta_{ab} \mathcal{L}(\vec{x},t) &= \frac{\d}{\d t}(0) + (\nabla_b x_a \L  - x_b \nabla_a\L ) \\
+    &= \frac{\d}{\d t}(0) + \nabla \cdot (\hat{b}x_a\L - \hat{a}x_b\L) \\
+    \implies R = 0, J &= (\hat{b}x_a\L - \hat{a}x_b\L) \\
+\end{align*}
+(where $\hat{a}, \hat{b}$ are the unit vectors in the $ab$ plane.)
+
+Start with general definition of $\mathcal{M}_{ab}, \mathcal{M}_{cab}$ (Noether charge density and current density):
+
+\begin{align*}
+    \mathcal{M}_{ab} = \mathcal{R} &= \delta_{ab}\psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma} + \delta_{ab}\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}} - R \\
+    &= (x_a\nabla_b - x_b\nabla_a)\psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma} + (x_a\nabla_b - x_b\nabla_a)\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}} - 0 \\
+    &= x_a\nabla_b \psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma} - x_b\nabla_a\psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma} + x_a\nabla_b\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}} - x_b\nabla_a\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}} \\
+    &= x_a\left(\nabla_b \psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma} 
+    + \nabla_b\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}}\right)
+    - x_b\left(\nabla_a\psi_\sigma \frac{\d \L}{\d \frac{\d}{\d t}\psi_\sigma}
+    + \nabla_a\psi^{\sigma\dagger} \frac{\d \L}{\d \frac{\d}{\d t}\psi^{\sigma\dagger}}\right) \\
+    &= x_aT_{tb} - x_bT_{ta} \\
+\end{align*}
+
+Similarly (here it's pretty awkward to use $\delta$ as a variation and a Kronecker delta, but bear with me),
+\begin{align*}
+    \mathcal{M}_{cab} &= \mathcal{J}^c = \delta_{ab}\psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma} + \delta_{ab}\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}} - J^c \\
+    &= (x_a\nabla_b - x_b\nabla_a)\psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma} + (x_a\nabla_b - x_b\nabla_a)\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}} - (\hat{b}x_a\L - \hat{a}x_b\L)^c \\
+    &= x_a\nabla_b \psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma} 
+    - x_b\nabla_a\psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma} 
+    + x_a\nabla_b\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}} 
+    - x_b\nabla_a\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}} 
+    - (\hat{b}x_a\L - \hat{a}x_b\L)^c \\
+    &= x_a\left(\nabla_b \psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma}
+    +\nabla_b\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}}
+    - \delta_{cb}\L\right) 
+    - x_b\left(\nabla_a\psi_\sigma \frac{\d \L}{\d \nabla_c \psi_\sigma}
+    + \nabla_a\psi^{\sigma\dagger} \frac{\d \L}{\d \nabla_c \psi^{\sigma\dagger}}
+    - \delta_{ca}\L \right) \\
+    &= x_a T_{cb} - x_b T_{ca} \\
+\end{align*}
+
+
+So we have shown (3.15) and (3.16):
+\begin{align*}
+    \mathcal{M}_{ab} &= x_a T_{tb} - x_b T_{ta}\\
+    \mathcal{M}_{cab} &= x_a T_{cb} - x_b T_{ca}\\
+\end{align*}
+
+
