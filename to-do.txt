@@ -1,5 +1,5 @@
-1: Not started.
-2: Not started.
+1: Done.
+2: Done.
 3: Not started.
 4: Not started.
 5: Not started.

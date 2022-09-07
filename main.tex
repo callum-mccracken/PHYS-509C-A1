@@ -8,6 +8,12 @@
 \usepackage{physics}
 \usepackage{todonotes} 
 \usepackage{subfiles}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{url}
+\hypersetup{colorlinks,breaklinks,
+            urlcolor=[RGB]{0,0.5,0.5},
+            linkcolor=[RGB]{0,0.5,0.5}}
 
 \setlength{\parindent}{0.0in}
 \setlength{\parskip}{0.05in}
@@ -22,13 +28,18 @@
 
 \thispagestyle{fancyplain}
 \headheight 35pt
-\lhead{Callum McCracken, 20334298}
-\chead{\textbf{PHYS 509C HW1}}
-\rhead{\today}
-\lfoot{}
-\cfoot{}
+\author{Callum McCracken, 20334298}
+\title{PHYS 509C Assignment 1}
+\date{September 22, 2022}
 \rfoot{\small\thepage}
 \headsep 1.5em
+
+\maketitle
+\Large{Code for this assignment is here:
+
+\url{https://github.com/callum-mccracken/PHYS-509C-A1}}
+
+\newpage
 
 \subfile{1}
 \newpage

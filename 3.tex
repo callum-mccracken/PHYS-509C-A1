@@ -1,38 +1,8 @@
-\section{Use (3.15), (3.16) to show $\frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x},t) + \nabla^c \mathcal{M}_{cab}(\vec{x}, t) = 0$ is obeyed when $\frac{\d}{\d t}T_{tt}(\vec{x},t) + \nabla^bT_{bt}(\vec{x},t) = 0$, $\frac{\d}{\d t}T_{ta}(\vec{x},t) + \nabla^bT_{ba}(\vec{x},t) = 0$, and $T_{ab}(\vec{x},t) = T_{ba}(\vec{x},t)$.}
+\section{Three independent random numbers $X_1, X_2, X_3$ are drawn
+from uniform distributions with means of 0 and variances of 1/3.
+Let $Z$ be the sum of these three numbers.
+Derive the normalized probability distribution for $Z$.}
 
-(3.15) and (3.16):
-\begin{align*}
-    \mathcal{M}_{ab}(\vec{x}, t) &= x_a T_{tb}(\vec{x}, t) - x_b T_{ta}(\vec{x}, t)\\
-    \mathcal{M}_{cab}(\vec{x}, t) &= x_a T_{cb}(\vec{x}, t) - x_b T_{ca}(\vec{x}, t)\\
-\end{align*}
-
-Take $\frac{\d}{\d t}$ of (3.15):
-\begin{align*}
-    \frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x}, t) &= \frac{\d}{\d t}\left(x_a T_{tb}(\vec{x}, t) - x_b T_{ta}(\vec{x}, t)\right)\\
-    &=  \frac{\d}{\d t}x_a T_{tb}(\vec{x}, t) + x_a \frac{\d}{\d t}T_{tb}(\vec{x}, t) - \frac{\d}{\d t}x_b T_{ta}(\vec{x}, t) - x_b \frac{\d}{\d t}T_{ta}(\vec{x}, t)\\
-\end{align*}
-
-Note that none of the $x_i$ depend explicitly on $t$, so $\frac{\d}{\d t}x_i = 0$,
-\begin{align*}
-    \frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x}, t) 
-    &=  x_a \frac{\d}{\d t}T_{tb}(\vec{x}, t) - x_b \frac{\d}{\d t}T_{ta}(\vec{x}, t)\\
-\end{align*}
-
-Use $\frac{\d}{\d t}T_{ta}(\vec{x},t) + \nabla^bT_{ba}(\vec{x},t) = 0$
-
-\begin{align*}
-    \frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x}, t) &= 
-    - x_a \nabla^cT_{cb}(\vec{x},t) 
-    + x_b \nabla^cT_{ca}(\vec{x},t) \\
-\end{align*}
-
-Now take $\nabla^c$ of (3.16):
-\begin{align*}
-    \nabla^c \mathcal{M}_{cab}(\vec{x}, t) 
-    &= \delta_a^c T_{cb}(\vec{x}, t) + x_a \nabla^c T_{cb}(\vec{x}, t) - \delta_b^c T_{ca}(\vec{x}, t) - x_b \nabla^c T_{ca}(\vec{x}, t) \\
-\end{align*}
-
-Now sum the delta terms over $c$ and use $T_{ab}=T_{ba}$:
 \begin{align*}
     \nabla^c \mathcal{M}_{cab}(\vec{x}, t) 
     &= T_{ab}(\vec{x}, t) + x_a \nabla^c T_{cb}(\vec{x}, t) - T_{ba}(\vec{x}, t) - x_b \nabla^c T_{ca}(\vec{x}, t) \\
