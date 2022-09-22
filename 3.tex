@@ -1,14 +1,224 @@
-\section{Three independent random numbers $X_1, X_2, X_3$ are drawn
+\section{Three independent random numbers
+\texorpdfstring{$X_1, X_2, X_3$}{X1, X2, X3} are drawn
 from uniform distributions with means of 0 and variances of 1/3.
-Let $Z$ be the sum of these three numbers.
-Derive the normalized probability distribution for $Z$.}
+Let \texorpdfstring{$Z$}{Z} be the sum of these three numbers.
+Derive the normalized probability distribution for \texorpdfstring{$Z$}{Z}.}
+
+A uniform distribution's PDF is
 
 \begin{align*}
-    \nabla^c \mathcal{M}_{cab}(\vec{x}, t) 
-    &= T_{ab}(\vec{x}, t) + x_a \nabla^c T_{cb}(\vec{x}, t) - T_{ba}(\vec{x}, t) - x_b \nabla^c T_{ca}(\vec{x}, t) \\
-    &= 0 + x_a \nabla^c T_{cb}(\vec{x}, t) - x_b \nabla^c T_{ca}(\vec{x}, t) \\
-    &= - \frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x}, t) \\
-    \implies \frac{\d}{\d t}\mathcal{M}_{ab}(\vec{x}, t) + \nabla^c \mathcal{M}_{cab}(\vec{x}, t) 
-    &= 0 \\
+    P(x) &= \left\{ 
+        \begin{matrix}
+            \frac{1}{b-a},& x \in [a,b]\\
+            0,& x \notin [a,b]\\
+        \end{matrix}
+    \right.
 \end{align*}
 
+with mean $\frac{a+b}{2}$ and variance $\frac{(b-a)^2}{12}$.
+
+Here we have a mean of 0 $\implies b=-a \implies \frac{(b-a)^2}{12} = \frac{a^2}{3}$.
+
+And a variance of $\frac{1}{3} \implies a = -1, b = 1$.
+
+\begin{align*}
+    P(x) &= \left\{ 
+        \begin{matrix}
+            \frac{1}{2},& x \in [-1,1]\\
+            0,& x \notin [-1,1]\\
+        \end{matrix}
+    \right.
+\end{align*}
+
+Or in terms of heaviside step functions:
+\begin{align*}
+    P(x) &= \frac{1}{2}(H(x+1) - H(x-1)) \\
+\end{align*}
+
+
+If we have two independent variables of this type, we have:
+\begin{align*}
+    Y &= X_1 + X_2 \\
+    P(y) &= \int_{x_1, x_2 | x_1+x_2=y} P(x_1, x_2) \\
+\end{align*}
+
+It's not super obvious to me what to do here, after some googling it seems this
+can be done with CDFs:
+
+The CDF of $Y$ is found using all possibile combinations of $x_1 + x_2 < y$. At this point note $y \in [-2, 2]$.
+\begin{align*}
+    F(y) &= \iint_{x_1 + x_2 < y} P(x_1, x_2) dx_1 dx_2 \\
+    &= \int_{x_1 =-\infty}^{\infty} \int_{x_2=-\infty}^{y-x_1} P(x_1, x_2) dx_1 dx_2 \\
+\end{align*}
+
+And if we take the derivative we'll get $P(y)$:
+\begin{align*}
+    P(y) &= \frac{d}{dy} \int_{x_1 =-\infty}^{\infty} \int_{x_2=-\infty}^{y-x_1} P(x_1, x_2) dx_1 dx_2 \\
+    &= \int_{x_1 =-\infty}^{\infty} \frac{d}{dy} \int_{x_2=-\infty}^{y-x_1} P(x_1, x_2) dx_1 dx_2 \\
+    &= \int_{x_1 =-\infty}^{\infty} P(x_1, y-x_1) dx_1 \\
+\end{align*}
+
+Since we had two independent variables,
+\begin{align*}
+    P(y) &= \int_{x_1 =-\infty}^{\infty} P(x_1)P(y-x_1) dx_1 \\
+    &= \int_{x_1 =-\infty}^{\infty} \frac{1}{2}(H(x_1+1) - H(x_1-1))\frac{1}{2}(H(y-x_1+1) - H(y-x_1-1)) dx_1 \\
+    &= \frac{1}{4}\int_{x_1 =-\infty}^{\infty} H(x_1+1)H(y-x_1+1) - H(x_1+1)H(y-x_1-1) \\
+    &- H(x_1-1)H(y-x_1+1) + H(x_1-1)H(y-x_1-1) dx_1 \\
+\end{align*}
+
+Consider the products of steps we have:
+
+\begin{itemize}
+    \item $H(x_1+1)H(y-x_1+1)$
+
+    To be non-zero: $x_1 + 1 > 0$ and $y - x_1 + 1 > 0$.
+
+    \item $H(x_1+1)H(y-x_1-1)$
+
+    To be non-zero: $x_1 + 1 > 0$ and $y - x_1 - 1 > 0$.
+
+    \item $H(x_1-1)H(y-x_1+1)$
+
+    To be non-zero: $x_1 - 1 > 0$ and $y - x_1 + 1 > 0$.
+
+    \item $H(x_1-1)H(y-x_1-1)$
+
+    To be non-zero: $x_1 - 1 > 0$ and $y - x_1 - 1 > 0$.
+
+\end{itemize}
+
+So we have points of interest at $x_1 = -1, y-1, y+1, 1$. How these relate to each other depends on $y$.
+
+Consider if the conditions above can be met simultaneously for $y \in [-2,2]$, i.e. whether the products will be zero.
+\begin{itemize}
+    \item $H(x_1+1)H(y-x_1+1)$ can be non-zero for $y \in [-2,2]$
+    \item $H(x_1+1)H(y-x_1-1)$ can be non-zero for $y \in [0,2]$
+    \item $H(x_1-1)H(y-x_1+1)$ can be non-zero for $y \in [0,2]$
+    \item $H(x_1-1)H(y-x_1-1)$ is always zero for $y \in [-2,2]$
+\end{itemize}
+
+So for $y \in [-2, 0]$:
+\begin{align*}
+    P(y) &= \frac{1}{4}\int_{x_1 =-1}^{y+1} 1 - 0- 0 + 0 dx_1 \\
+    &= \frac{1}{4}(y+2) \\
+\end{align*}
+
+And for $y \in [0, 2]$:
+\begin{align*}
+    P(y) &= \frac{1}{4}\int_{x_1=y-1}^{1} 1 - 1 - 1 + 0 dx_1 \\
+    &= \frac{1}{4}(-y) \\
+\end{align*}
+
+All together,
+\begin{align*}
+    P(y) &= \frac{1}{4}(y+2)H(y+2) - \frac{1}{2}yH(y) 
+    + (\frac{1}{4}y-\frac{1}{2})H(y-2) \\
+\end{align*}
+
+Then take another convolution to get $P(z)$ for $Z = Y + X_3$
+
+\begin{align*}
+    P(z) &= \int_{y =-\infty}^{\infty} P_{y}(y)P_{x_3}(z-y) dy \\
+    &= \int_{y =-\infty}^{\infty} \left(\frac{1}{4}(y+2)H(y+2) - \frac{1}{2}yH(y) 
+    + (\frac{1}{4}y-\frac{1}{2})H(y-2)\right)\\
+    &\hspace{2cm}\times\left(\frac{1}{2}(H(z-y+1) - H(z-y-1))\right) dy \\
+    &= \int_{y =-\infty}^{\infty} \left(\frac{1}{4}(y+2)H(y+2) - \frac{1}{2}yH(y) 
+    + (\frac{1}{4}y-\frac{1}{2})H(y-2)\right)\frac{1}{2}H(z-y+1)\\
+    &\hspace{2cm}- \left(\frac{1}{4}(y+2)H(y+2) - \frac{1}{2}yH(y) 
+    + (\frac{1}{4}y-\frac{1}{2})H(y-2)\right)\frac{1}{2}H(z-y-1) dy \\
+    &= \int_{y =-\infty}^{\infty} \frac{1}{8}(y+2)H(y+2)H(z-y+1) - \frac{1}{4}yH(y)H(z-y+1) \\
+    &\hspace{2cm}+ \frac{1}{8}(y-2)H(y-2)H(z-y+1) - \frac{1}{8}(y+2)H(y+2)H(z-y-1) \\
+    &\hspace{2cm}+ \frac{1}{4}yH(y)H(z-y-1) - \frac{1}{8}(y-2)H(y-2)H(z-y-1) dy \\
+\end{align*}
+
+\begin{itemize}
+    \item $H(y+2)H(z-y+1)$ can be non-zero for $z \in [-3,3]$
+
+    For $z \in [-3,1]$:
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} \frac{1}{8}(y+2)H(y+2)H(z-y+1) dy \\
+        &= \int_{y =-2}^{z+1} \frac{1}{8}(y+2) dy \\
+        &= \frac{z^2+6z+9}{16} \\
+    \end{align*}
+
+    For $z \in [1,3]$:
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} \frac{1}{8}(y+2)H(y+2)H(z-y+1) dy \\
+        &= \int_{y =-2}^{2} \frac{1}{8}(y+2) dy \\
+        &= \left[\frac{1}{4}y^2+\frac{1}{4}y\right]_{-2}^{2} \\
+        &= \frac{1}{4}(2)^2+\frac{1}{4}(2) - \frac{1}{4}(-2)^2-\frac{1}{4}(-2) \\
+        &= 1 \\
+    \end{align*}
+
+    \item $H(y)H(z-y+1)$ can be non-zero for $z \in [-1,3]$
+
+    For $z \in [-1, 1]$
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} - \frac{1}{4}yH(y)H(z-y+1) dy \\
+        &= \int_{y=0}^{z+1} -\frac{1}{4}y dy \\
+        &= -\frac{z^2+2z+1}{8} \\
+    \end{align*}
+
+    For $z \in [1, 3]$
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} - \frac{1}{4}yH(y)H(z-y+1) dy \\
+        &= \int_{y=0}^{2} -\frac{1}{4}y dy \\
+        &= -\frac{1}{2} \\
+    \end{align*}
+
+    \item $H(y-2)H(z-y+1)$ is always zero within the possible range of $y$.
+    \item $H(y+2)H(z-y-1)$ can be non-zero for $z \in [-1,3]$
+
+    For $z \in [-1, 3]$
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} - \frac{1}{8}(y+2)H(y+2)H(z-y-1) dy \\
+        &= \int_{y=-2}^{z-1} - \frac{1}{8}(y+2) dy \\
+        &= -\frac{z^2+2z+1}{16} \\
+    \end{align*}
+
+    \item $H(y)H(z-y-1)$ can be non-zero for $z \in [1,3]$
+
+    For $z \in [1, 3]$
+    \begin{align*}
+        &\int_{y =-\infty}^{\infty} + \frac{1}{4}y H(y)H(z-y-1) dy \\
+        &= \int_{y=0}^{z-1} - \frac{1}{4}y dy \\
+        &= - \frac{z^2-2z+1}{8} \\
+    \end{align*}
+
+    \item $H(y-2)H(z-y-1)$ is always zero for $y \in [-2,2]$.
+
+\end{itemize}
+
+Let's put this together in sections:
+\begin{itemize}
+    \item For $z \in [-3, -1]$:
+    
+    \begin{align*}
+        P(z) &= \frac{z^2+6z+9}{16} \\
+    \end{align*}
+    
+    \item For $z \in [-1,1]$:
+    
+    \begin{align*}
+        P(z) &= \frac{z^{2}+6z+9}{16}-\frac{z^{2}+2z+1}{8}-\frac{z^{2}+2z+1}{16} \\
+        &= -\frac{z^{2}+3}{8} \\
+    \end{align*}
+
+    \item For $z \in [1,3]$:
+    
+    \begin{align*}
+        P(z) &= 1-\frac{1}{2}+0-\frac{z^{2}+2z+1}{16}+\frac{z^{2}-2z+1}{8}\\
+        &= \frac{z^2 -6z + 9}{16}\\
+    \end{align*}
+
+    \item zero elsewhere.
+\end{itemize}
+
+So all together:
+\begin{align*}
+    P(z) &= \frac{z^2+6z+9}{16}(H(z+3) - H(z+1)) \\
+    &- \frac{z^{2}+3}{8} (H(z+1) - H(z-1)) \\
+    &+ \frac{z^2 -6z + 9}{16} (H(z-1) - H(z-3)) \\
+\end{align*}
+
+I see online there's a simpler version of this that's more general for higher numbers of uniform variables. Was there a better way to approach this? Seems like this approach is valid though, and the function we have is normalized.

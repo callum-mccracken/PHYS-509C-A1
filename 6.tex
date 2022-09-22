@@ -1,25 +1,110 @@
-\section{Show that the Galilean transformations defined above are a symetry of the theory defined by the action and Lagrangian density (3.5).}
+\section{Consider an infinite series of random variables
+\texorpdfstring{$X_i$}{Xi}, where each variable is generated from its
+predecessor according to
+\texorpdfstring{$X_i = aX_{i-1} + B_i$}{Xi = aXi-1 + Bi}.
+Here \texorpdfstring{$a$}{a} is a constant and \texorpdfstring{$B_i$}{Bi}
+is a Gaussian random variable with mean \texorpdfstring{$m$}{m}
+and standard deviation \texorpdfstring{$s$}{s}.
+If all of the \texorpdfstring{$X_i$}{Xi} are identically distributed
+with mean \texorpdfstring{$\mu$}{mu} and standard deviation
+\texorpdfstring{$\sigma$}{sigma}, then what constraints does this place on
+\texorpdfstring{$a$}{a}, \texorpdfstring{$m$}{m}, and \texorpdfstring{$s$}{s}?
+What condition will result in the \texorpdfstring{$X_i$}{Xi} also being
+independent from each other? In the case that they are identically
+distributed but not necessarily independent,
+derive a formula for the correlation coefficient between
+\texorpdfstring{$X_i$}{Xi} and \texorpdfstring{$X_{i-j}$}{Xi-j}.}
 
-The Galilean transformations defined above:
+First recall a few things:
+\begin{itemize}
+    \item the definition of correlation coefficient: $\rho_{A,B} = \frac{\operatorname{Cov}(A,B)}{\sigma_A \sigma_B}$
+    \item the relationship between variance and covariance of summed variables $\operatorname{Var}(A+B) = \operatorname{Var}(A) + \operatorname{Var}(B) + 2\operatorname{Cov}(A, B)$
+    \item How does scaling affect the mean?
+    \begin{align*}
+        \overline{aX} &= a\overline{X} \\
+    \end{align*}
+    \item How does scaling affect Variance?
+    \begin{align*}
+        \operatorname{Var}(aX) &= \overline{(aX)^2} - (\overline{aX})^2 \\
+        &= a^2\left(\overline{X^2} - (\overline{X})^2\right) \\
+        &= a^2\operatorname{Var}(X) \\
+    \end{align*}
+    \item How does scaling affect Covariance?
+    \begin{align*}
+        \operatorname{Cov}(aX, Y) &= \overline{aXY} - \overline{aX}\overline{Y} \\
+        &= a(\overline{XY} - \overline{X}\overline{Y}) \\
+    \end{align*}
+    \item For independent Gaussians, their sum is also a Gaussian, with mean $\mu_{A + B} = \mu_A + \mu_B$ and variance $\sigma_{A+B}^2 =\sigma_A^2 + \sigma_B^2$. 
+\end{itemize}
+
+And find a relationship between $X_i$ and $X_{i-j}$:
+    
 \begin{align*}
-    \delta\psi_\sigma(\vec{x}, t) &= \left(-\vec{v}t \cdot \vec{\nabla} + \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right)\psi_\sigma(\vec{x}, t) \\
-    \delta\psi^{\sigma\dagger}(\vec{x}, t) &= \left(-\vec{v}t \cdot \vec{\nabla} - \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right)\psi^{\sigma\dagger}(\vec{x}, t) \\
+    X_i &= aX_{i-1} + B_i \\
+    &= a(aX_{i-2} + B_{i-1}) + B_i \\
+    &= a^2X_{i-2} + aB_{i-1} + B_i \\
+    &= a^3X_{i-3} + a^2B_{i-2} + aB_{i-1} + B_i \\
+    &= a^4X_{i-4} + a^3B_{i-3} + a^2B_{i-2} + a^1B_{i-1} + a^0B_{i-0} \\
+    & \cdot \\
+    &= a^jX_{i-j} + \sum_{k=0}^{j-1}a^kB_{i-k} \\
+    \implies X_i - a^jX_{i-j} &= \sum_{k=0}^{j-1}a^kB_{i-k}
+\end{align*}
+
+Find the variance and mean of the sum of the Gaussians (assuming they're independent):
+\begin{align*}
+    &\operatorname{Var}(B_{i} + a^1B_{i-1} + \ldots + a^jB_{i-j}) \\
+    &= \operatorname{Var}(B_{i}) + \operatorname{Var}(a^1B_{i-1} + \ldots + a^jB_{i-j})\\
+    &= s^2 + a^2\operatorname{Var}(B_{i-1} + a B_{i-2} + \ldots + a^{j-1}B_{i-j})\\
+    &= s^2 + a^2s^2 + a^2\operatorname{Var}(a B_{i-2} + \ldots + a^{j-1}B_{i-j})\\
+    &= s^2 + a^2s^2 + a^4s^2 + \ldots + a^{2j}s^2\\
+    &= s^2\sum_{k=0}^{j}a^{2k}\\
+\end{align*}
+
+\begin{align*}
+    \overline{B_{i} + a^1B_{i-1} + \ldots + a^jB_{i-j}} &= m\sum_{k=0}^j a^j \\
 \end{align*}
 
 
-To show this is a symmetry, we want to show $\delta\L(\vec{x},t) = \frac{\d}{\d t}R(\vec{x},t) + \vec{\nabla}\cdot\vec{J}(\vec{x},t)$ for some $R,\vec{J}$.
+\begin{itemize}
+    \item How are $a,m,s$ constrained?
+    
+    For the sum and variance of infinitely many $B_i$ to be defined for non-zero $m,s$, we need $a \in (-1,1)$.
 
-The Lagrangian:
-\begin{align*}
-    \L &= \frac{i\hbar}{2}\psi^{\sigma\dagger} \frac{\d}{\d t}\psi_{\sigma} - \frac{i\hbar}{2}\frac{\d}{\d t}\psi^{\sigma\dagger} \psi_{\sigma} - \frac{\hbar^2}{2m}\nabla \psi^{\sigma\dagger} \cdot \nabla \psi_{\sigma} - \frac{\lambda}{2}\left(\psi^{\sigma\dagger} \psi_{\sigma}\right)^2 \\
-\end{align*}
+    I'm not sure if $m, s$ need to be constrained, I don't think they do? Clearly $s > 0$ by definition of variance.
 
-This is does not explicitly depend on $\vec{x}$ or $t$, so we have
-\begin{align*}
-    \delta \L &= \left(-\vec{v}t \cdot \vec{\nabla} + \frac{i}{\hbar}m\vec{v}\cdot\vec{x}\right) \L \\
-    &= \left(-v_a t \nabla_a \L + \frac{i}{\hbar}m v_a x_a \L\right) \\
-    &= 0  + \frac{\d}{\d t}\left(t\frac{i}{\hbar}mv_a x_a \L\right) \\
-    &= \frac{\d}{\d t}\left(t\frac{i}{\hbar}m \vec{v}\cdot\vec{x} \L\right) + \nabla \cdot \vec{0} \\
-\end{align*}
+    \item What's the condition such that the $X_i$ are independent from each other?
 
-So these transformations are a symmetry, with $R=\frac{it}{\hbar}m\vec{v}\cdot \vec{x}\L, \vec{J} = 0$.
+    Well if $a=0$ then $X_i = B_i$, just a Gaussian, and I think we can assume all the $B_i$ are independent even though the question doesn't specifically say so. 
+
+    \item Find $\rho_{X_i,X_{i-j}}$ if $X_i,X_{i-j}$ are not independent.
+
+    Use our equation above with covariance.
+    \begin{align*}
+        \operatorname{Var}(\sum_{k=0}^{j-1}a^kB_{i-k}) &= \operatorname{Var}(X_i) + \operatorname{Var}((-a^j)X_{i-j}) + 2\operatorname{Cov}(X_i, (-a^j)X_{i-j}) \\
+    \end{align*}
+
+        
+    \begin{align*}
+        \operatorname{Var}(\sum_{k=0}^{j-1}a^kB_{i-k}) &= \operatorname{Var}(X_i) + \operatorname{Var}((-a^j)X_{i-j}) \\
+        &+ 2\operatorname{Cov}(X_i, (-a^j)X_{i-j}) \\
+        s^2\sum_{k=0}^{j}a^{2k} &= \sigma^2 + a^{2j}\sigma^2 -2a^j\operatorname{Cov}(X_i, X_{i-j}) \\
+        \frac{\sigma^2 + a^{2j}\sigma^2 - s^2\sum_{k=0}^{j}a^{2k}}{2a^j} &= \operatorname{Cov}(X_i, X_{i-j}) \\
+    \end{align*}
+    
+    So we get the correlation coefficient:
+    \begin{align*}
+        \rho_{X_i,X_{i-j}} &= \frac{\operatorname{Cov}(X_i,X_{i-j})}{\sigma_{X_i} \sigma_{X_{i-j}}} \\
+        &= \frac{\sigma^2 + a^{2j}\sigma^2 - s^2\sum_{k=0}^{j}a^{2k}}{2a^j\sigma^2} \\
+        &= \frac{1}{2a^j} + \frac{1}{2}a^j - \frac{s^2}{2\sigma^2}\sum_{k=0}^{j}a^{2k-j}\\
+    \end{align*}
+
+    Knowing that the correlation coefficient must be between -1 and +1 we may get an extra restriction on $s$.
+
+    \begin{align*}
+        -1 &< \frac{1}{2a^j} + \frac{1}{2}a^j - \frac{s^2}{2\sigma^2}\sum_{k=0}^{j}a^{2k-j} < 1 \\
+        -1 - \frac{1}{2a^j} - \frac{1}{2}a^j &<  - \frac{s^2}{2\sigma^2}\sum_{k=0}^{j}a^{2k-j} < 1 - \frac{1}{2a^j} - \frac{1}{2}a^j \\
+        1 + \frac{1}{2a^j} + \frac{1}{2}a^j &>  \frac{s^2}{2\sigma^2}\sum_{k=0}^{j}a^{2k-j} > -1 + \frac{1}{2a^j} + \frac{1}{2}a^j \\
+        \left(1 + \frac{1}{2a^j} + \frac{1}{2}a^j\right)\frac{2\sigma^2}{\sum_{k=0}^{j}a^{2k-j}} &>  s^2 > \left(-1 + \frac{1}{2a^j} + \frac{1}{2}a^j\right)\frac{2\sigma^2}{\sum_{k=0}^{j}a^{2k-j}} \\
+    \end{align*}
+
+\end{itemize}

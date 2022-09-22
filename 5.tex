@@ -1,63 +1,59 @@
-\section{Assume that $$P_a \ket{\0} = 0, \bra{\0}P_a = 0, M_{ab}\ket{\0}=0, \bra{\0}M_{ab}=0.$$ Prove that $\bra{\0}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0}$ can only be a function of the coordinates $\vec{x}$ and $\vec{y}$ through the combination $|\vec{x}-\vec{y}| = \sqrt{(\vec{x}-\vec{y})^2}$.}
+\section{Suppose that galactic supernovae obey Poissonian statistics.
+The mean number of supernovae per century is 1/3.}
 
-Consider that expetation value of a commutator:
-\begin{align*}
-    &\frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), P_a\right] \ket{\0} \\
-    &= \frac{1}{i\hbar} \bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')P_a \ket{\0} - \bra{\0}P_a\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\ 
-    &= \frac{1}{i\hbar} \bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')(0) - (0)\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}  &[\text{use }\bra{\0}P_a = 0, P_a\ket{\0} = 0]\\ 
-    &= 0 - 0 \\ 
-    &= 0 \\ 
-\end{align*}
+\begin{itemize}
+    \item What is the most likely date for the next supernova?
 
-Then consider $\left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}$:
+    Poissonian statistics means we have a pdf of the form
+    $P(k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}$,
+    where $k$ is the number of supernova observed in time $t$ (measured in centuries),
+    and $\lambda = 1/3$ is the mean number of supernovae in a century.
 
-\begin{align*}
-    &\left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\
-    &= \bra{\0} \frac{\d}{\d x^a}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0} + \bra{\0}\psi_\sigma(\vec{x},t)\frac{\d}{\d y^a}\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\
-    &= \frac{1}{i\hbar}\bra{\0} [\psi_\sigma(\vec{x},t), \mathcal{Q}]\psi^{\dagger\rho}(\vec{y},t')\ket{\0} + \frac{1}{i\hbar}\bra{\0}\psi_\sigma(\vec{x},t)[\psi^{\dagger\rho}(\vec{y},t'), \mathcal{Q}] \ket{\0} \\
-    &= \frac{1}{i\hbar}\bra{\0} [\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \mathcal{Q}]\ket{\0} \\
-\end{align*}
+    To find the probability that a supernova happens at a particular time, we'll consider a small interval around that particular time and find the probability of one supernova happening inside that interval and nothing happening before.
 
-So in particular for $P_a$,
-\begin{align*}
-    0 &= \frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), P_a\right] \ket{\0} \\
-    &= \left(\frac{\d}{\d x^a} + \frac{\d}{\d y^a}\right)\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} \\ 
-\end{align*}
+    The probability of having one supernova after time $t$ is given by 
+    $$P(k=1;t) = \lambda t e^{-\lambda t}$$.
 
-And if we let $\vec{r} = \vec{x} + \vec{y}$,
-\begin{align*}
-    \frac{\d}{\d r^a} &= \frac{\d}{\d x^a} + \frac{\d}{\d y^a} \\
-    \implies \frac{\d}{\d r^a}\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0} &= 0 \\
-\end{align*}
+    If we want this to be the only supernova before time $t$ we also need to consider the probability that there were no supernovae before $t$, i.e.
+    $$P(k=0;t-\Delta t) = e^{-\lambda (t-\Delta t)}$$
 
-This implies $\bra{\0} \psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t') \ket{\0}$ depends on $\vec{x}$ and $\vec{y}$ through the combination $\vec{x}-\vec{y}$ rather than $\vec{x}+\vec{y}$.
+    These two things are independent (the probability that a supernova happens in one time interval vs another) so the joint probability function is as follows:
 
-Then, it is also true that  
-\begin{align*}
-    0 &= \frac{1}{i\hbar} \bra{\0} \left[\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t'), M_{ab}\right] \ket{\0} \\ 
-\end{align*}
+    \begin{align*}
+        P(\text{supernova in }[t-\Delta t, t]) &= P(k=0;t-\Delta t)P(k=1;t) \\
+        &=  \lambda t e^{-\lambda t}e^{-\lambda (t - \Delta t)} \\
+    \end{align*}
 
-And finally to show this function only depends on the magnitude $|\vec{x}-\vec{y}|$, let's show that $(x_a\nabla_b - x_b\nabla_a)f(\vec{x}) = 0$ for every pair $(a,b)$ $\implies f(\vec{x})$ depends only on $|\vec{x}|$.
+    In the limit as $\Delta t \to 0$ we get:
 
-Consider just $x^1, x^2$ for now.
+    \begin{align*}
+        P(\text{supernova at }t) &=  \lambda t e^{-2\lambda t} \\
+    \end{align*}
 
-\begin{align*}
-    (x^1\nabla_2 - x^2\nabla_1)f(x^1,x^2,\ldots) &= 0 \implies f = f((x^1)^2 + (x^2)^2,\ldots) \\
-\end{align*}
+    This has a maximum: find it.
 
-Then $x^1, x^2, x^3$ (or equivalently for $f$, $(x^1)^2 + (x^2)^2, x^3$):
-\begin{align*}
-    (x^2\nabla_3 - x^3\nabla_2)f((x^1)^2 + (x^2)^2, x^3,\ldots) &= 0 \implies f = f((x^1)^2 + (x^2)^2 + (x^3)^2,\ldots) \\
-\end{align*}
+    \begin{align*}
+        \frac{d}{dt}P(\text{supernova at }t) &=  \lambda e^{-2\lambda t} - 2\lambda^2 t e^{-2\lambda t} \\
+        0 &=  \lambda e^{-2\lambda t} - 2\lambda^2 t e^{-2\lambda t} \\
+        2\lambda^2 t e^{-2\lambda t} &=  \lambda e^{-2\lambda t} \\
+        2\lambda t &= 1\\
+        t &= \frac{1}{2\lambda}\\
+        &= \frac{1}{2\frac{1}{3}}\\
+        &= \frac{3}{2}\\
+    \end{align*}
 
-And if we continue in the same way for however many coordinates we have, we find:
-\begin{align*}
-    f = f(\sum_i (x^i)^2) \\
-\end{align*}
-    
-Or equivalently,
-\begin{align*}
-    f = f(\sqrt{\sum_i (x^i)^2}) = f(|\vec{x}|) \\
-\end{align*}
+    So the next supernova is most likely in $1.5$ centuries.
+    That's September 22, 2172. I wonder if humans will be around by then...
 
-Since we have a function of this type above, which satisfies $(x_a\nabla_b - x_b\nabla_a)f(\vec{x}) = 0$ for every pair $(a,b)$, we can say $\bra{\0}\psi_\sigma(\vec{x},t)\psi^{\dagger\rho}(\vec{y},t')\ket{\0}$ is only a function of $|\vec{x}-\vec{y}| = \sqrt{\sum_i (x_i-y_i)^2}$.
+    \item What is the probability distribution for the length of the interval between
+    now and the next galactic supernova?
+
+    It's what we had above, the probability of the next supernova happening a time $t_0$ away from now is given by:
+
+    $$P(t_0) = \lambda t e^{-2\lambda t_0}.$$
+
+    (Maybe we were not supposed to derive that earlier...)
+
+\end{itemize}
+
+
