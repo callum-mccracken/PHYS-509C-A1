@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1663824713 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A1/main.tex" "main.pdf" "main" 1663824713
+["pdflatex"] 1663887127 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A1/main.tex" "main.pdf" "main" 1663887128
   "/etc/texmf/web2c/texmf.cnf" 1650909748 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A1/main.tex" 1663824712 1729 df1afbaa9dcc85705a3852fba3cb438a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -186,12 +186,12 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1650910921 2800008 845b345bf73c0add4239996f176a8ab4 ""
   "1.tex" 1662509607 915 eed040f6c717b9e429e7cadb71005f54 ""
   "2.tex" 1662509607 700 5a3e133af9e1522cee006f00ebad2524 ""
-  "3.tex" 1663811823 7452 d786ea3ff548806c3e59f67b383b8ad0 ""
+  "3.tex" 1663887126 7452 0b79f61f9dc8cfef2ed0821a2a9a98f8 ""
   "4.tex" 1663800866 2646 18b88507a1f32ab9d57ef6c7063aa240 ""
-  "5.tex" 1663812894 2473 8b5e1777d1dc004cb2331c8203d87604 ""
-  "6.tex" 1663824254 5580 e9925a3e31c2b59ab96e506fa58dc770 ""
-  "main.aux" 1663824713 3327 39671e937a393d4239fac141629bbf07 "pdflatex"
-  "main.out" 1663824713 10433 1760447077ee52b3a37c23bc33c0d7c4 "pdflatex"
+  "5.tex" 1663879191 1461 9e83bd3b73f0c2459a107c174728a203 ""
+  "6.tex" 1663886484 4153 d0bfa87ad2312a59610ed9909c03847c ""
+  "main.aux" 1663887128 3327 cfc4f5c3938af1eeba8cee10cfc14250 "pdflatex"
+  "main.out" 1663887128 10433 1760447077ee52b3a37c23bc33c0d7c4 "pdflatex"
   "main.tex" 1663824712 1729 df1afbaa9dcc85705a3852fba3cb438a ""
   "q4_region.png" 1663739857 34695 892927ba9088629f38a5440dcb084b1c ""
   (generated)
