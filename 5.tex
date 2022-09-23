@@ -5,25 +5,25 @@ The mean number of supernovae per century is 1/3.}
     \item What is the most likely date for the next supernova?
 
     Poissonian statistics means we have a pdf of the form
-    $P(k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}$,
+    $P(k) = \frac{(R t)^k e^{-R t}}{k!}$,
     where $k$ is the number of supernova observed in time $t$ (measured in centuries),
-    and $\lambda = 1/3$ is the mean number of supernovae in a century.
+    and $R = 1/3$ is the mean number of supernovae in a century.
 
     To find the probability that a supernova happens at a particular time, consider the probability that no supernovae occur in time $T$.
 
-    $$P(k=0;T) = e^{-\lambda T}$$.
+    $$P(k=0;T) = e^{-R T}$$.
 
     So the probability of having a supernova by time $t$ is given by
     
-    $$P(\text{1st supernova within time }T) = 1 - e^{-\lambda T}$$
+    $$P(\text{1st supernova within time }T) = 1 - e^{-R T}$$
 
     That is, the probability that the first supernova occurs before $T$.
 
-    $$P(t_s \leq T) = 1 - e^{-\lambda T}$$
+    $$P(t_s \leq T) = 1 - e^{-R T}$$
 
     This is a cumulative probability function, differentiate to get the distribution for $t_s=T$.
 
-    $$P(t_s=T) = \lambda e^{-\lambda T}$$
+    $$P(t_s=T) = R e^{-R T}$$
 
     This function is monotonically decreasing, so the most likely date is today, Sept 22 2022.
 
@@ -32,7 +32,7 @@ The mean number of supernovae per century is 1/3.}
 
     It's what we had above (an exponential), the probability of the next supernova happening a time $T$ away from now is given by:
 
-    $$P(T) = \lambda e^{-\lambda T}$$
+    $$P(T) = R e^{-R T}$$
 
 \end{itemize}
 

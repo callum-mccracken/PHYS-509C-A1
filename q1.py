@@ -50,7 +50,7 @@ def main():
 
         {mean_text}
 
-        \\item The standard deviations for all thre variables.
+        \\item The standard deviations for all three variables.
 
         {std_text}
 
